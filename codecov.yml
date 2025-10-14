@@ -15,9 +15,12 @@ coverage:
   round: down
   range: 0..100
 
+fixes:
+  # Map Go module import paths in coverage.txt to repo-relative paths
+  - "github.com/christk1/kstack/::"
+
 ignore:
   - scripts/**
-  - pkg/utils/** # optional: adjust if you don't want to ignore
 
 comment:
   layout: "reach, diff, flags, files"
