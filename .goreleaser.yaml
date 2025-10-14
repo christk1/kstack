@@ -1,0 +1,49 @@
+project_name: kstack
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: kstack
+    main: ./cmd/kstack
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.ShortCommit}} -X main.buildDate={{.Date}}
+    flags:
+      - -trimpath
+    binary: kstack
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+
+brews:
+  - name: kstack
+    repository:
+      owner: christk1
+      name: homebrew-tap
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+    homepage: "https://github.com/christk1/kstack"
+    description: "Developer-first CLI to spin up local Kubernetes stacks (kind/k3d + Helm addons)."
+    license: "Apache-2.0"
+    test: |
+      system "#{bin}/kstack", "version"
+
+checksum:
+  name_template: "checksums.txt"
+
+dockers: []
+
+# Release via GitHub Releases (picked up automatically by GoReleaser GitHub Action)
+
+changelog:
+  use: github

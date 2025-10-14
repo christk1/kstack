@@ -1,0 +1,23 @@
+# General
+.DS_Store
+.env
+*.log
+*.tmp
+*.swp
+
+# Editors/IDE
+.idea/
+.vscode/
+
+# Go
+bin/
+build/
+dist/
+vendor/
+coverage.out
+*.coverprofile
+*.test
+
+# Project outputs
+/kstack
+grafana-ci-values.yaml

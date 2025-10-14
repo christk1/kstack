@@ -16,7 +16,26 @@ Developer-first CLI and reference template for spinning up a local Kubernetes st
 
 Use it as-is for local development and demos, or as a starting point to tailor your own stack—the built-in addons are examples you can extend or remove. The project is cleanly layered (providers → Helm wrapper → addon registry) and optimized for fast, reproducible workflows.
 
-![Coverage](https://img.shields.io/badge/Coverage-80.2%-brightgreen)
+<p align="center">
+  <a href="https://github.com/christk1/kstack/actions/workflows/ci.yml">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/christk1/kstack/ci.yml?branch=master" />
+  </a>
+  <a href="https://github.com/christk1/kstack/releases">
+    <img alt="Release" src="https://img.shields.io/github/v/release/christk1/kstack?sort=semver" />
+  </a>
+  <a href="https://goreportcard.com/report/github.com/christk1/kstack">
+    <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/christk1/kstack" />
+  </a>
+  <a href="go.mod">
+    <img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/christk1/kstack" />
+  </a>
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/christk1/kstack" />
+  </a>
+  <a href="https://codecov.io/gh/christk1/kstack">
+    <img alt="Coverage" src="https://codecov.io/gh/christk1/kstack/graph/badge.svg" />
+  </a>
+</p>
 
 ---
 

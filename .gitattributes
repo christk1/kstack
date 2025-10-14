@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+# Improve diffs for common formats
+*.md diff=markdown
+*.json linguist-language=JSON
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Go vendored code (if ever added)
+vendor/* linguist-vendored
