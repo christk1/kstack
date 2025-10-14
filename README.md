@@ -23,9 +23,6 @@ Use it as-is for local development and demos, or as a starting point to tailor y
   <a href="https://github.com/christk1/kstack/releases">
     <img alt="Release" src="https://img.shields.io/github/v/release/christk1/kstack?sort=semver" />
   </a>
-  <a href="https://goreportcard.com/report/github.com/christk1/kstack">
-    <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/christk1/kstack" />
-  </a>
   <a href="go.mod">
     <img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/christk1/kstack" />
   </a>

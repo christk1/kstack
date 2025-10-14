@@ -23,19 +23,26 @@ jobs:
 
       - name: Run tests and generate coverage
         run: |
-          go test -v ./... -covermode=count -coverprofile=coverage.out
-          go tool cover -func=coverage.out -o=coverage.out
+          # Generate coverage profile for Codecov (coverage.txt) and a func summary (coverage.out)
+          go test -v ./... -covermode=count -coverprofile=coverage.txt
+          # also produce the func-summary file for local scripts/tools compatibility
+          go tool cover -func=coverage.txt -o=coverage.out
 
-      - name: Upload coverage artifact
+      - name: Upload coverage artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-out
-          path: coverage.out
+          name: coverage-reports
+          path: |
+            coverage.txt
+            coverage.out
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        if: >-
+          ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
         with:
-          files: coverage.out
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.txt
           flags: unittests
           fail_ci_if_error: false
           verbose: true
