@@ -1,0 +1,22 @@
+# Dev-friendly overrides for prometheus-community/prometheus
+server:
+  persistentVolume:
+    enabled: true
+    size: 20Gi
+  retention: "7d"
+  resources: {}
+  # expose as ClusterIP, port 80 -> 9090
+  service:
+    enabled: true
+    type: ClusterIP
+    servicePort: 80
+  # web.enable-lifecycle for config reload
+  extraFlags:
+    - web.enable-lifecycle
+
+# NOTE:
+# As of prometheus-community/prometheus v19.x the subchart condition for kube-state-metrics
+# uses a hyphenated key: "kube-state-metrics.enabled" (was kubeStateMetrics.enabled).
+# Disable it here to keep the install minimal for local demos.
+kube-state-metrics:
+  enabled: false

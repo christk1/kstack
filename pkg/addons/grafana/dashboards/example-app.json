@@ -1,0 +1,23 @@
+{
+  "title": "Example App: Requests",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "http_requests_total (rate by path)",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 9 },
+      "targets": [
+        {
+          "expr": "sum(increase(http_requests_total[5m])) by (path)",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "Prometheus"
+          }
+        }
+      ]
+    }
+  ]
+}

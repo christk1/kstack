@@ -1,0 +1,38 @@
+name: Generate code coverage badge
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: write
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    name: Run tests and update coverage badge
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: 'go.mod'
+
+      - name: Run tests and generate coverage
+        run: |
+          go test -v ./... -covermode=count -coverprofile=coverage.out
+          go tool cover -func=coverage.out -o=coverage.out
+
+      - name: Generate coverage badge
+        uses: tj-actions/coverage-badge-go@v3
+        with:
+          filename: coverage.out
+
+      - name: Commit badge change
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update coverage badge"
+          file_pattern: README.md

@@ -1,0 +1,7 @@
+replicaCount: 1
+zookeeper:
+  enabled: true
+persistence:
+  enabled: false
+service:
+  type: ClusterIP

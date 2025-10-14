@@ -1,0 +1,6 @@
+apiVersion: v2
+name: example-app
+description: Minimal example Helm chart to deploy a demo app into the kstack cluster
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

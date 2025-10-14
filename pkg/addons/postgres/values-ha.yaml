@@ -1,0 +1,24 @@
+# Minimal overrides for Bitnami PostgreSQL HA chart (dev-friendly)
+# - Use free "latest" images (Bitnami catalog changes) for pgpool and postgresql-repmgr
+# - Disable persistence for ephemeral local clusters
+# - Provide simple credentials for quick local testing
+
+postgresql:
+  image:
+    registry: docker.io
+    repository: bitnami/postgresql-repmgr
+    tag: latest
+  username: app
+  password: app
+  database: app
+
+pgpool:
+  image:
+    registry: docker.io
+    repository: bitnami/pgpool
+    tag: latest
+
+# Disable PVCs for local/dev (use emptyDir)
+persistence:
+  enabled: false
+

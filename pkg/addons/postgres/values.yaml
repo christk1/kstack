@@ -1,0 +1,22 @@
+# Minimal overrides for Bitnami PostgreSQL chart used by kstack
+# Intentionally tiny: only what we must change for local dev.
+
+# Image override must be at top-level for this chart version (18.x)
+image:
+  registry: docker.io
+  repository: bitnami/postgresql
+  tag: latest
+
+primary:
+  persistence:
+    enabled: false
+
+# Notes:
+# - Credentials: by default the chart auto-generates passwords into a Secret
+#   named <release-name>-postgresql. Retrieve with:
+#   kubectl get secret <release-name>-postgresql -o go-template='{{range $k,$v := .data}}{{println $k}}: {{printf "%s" ($v | base64decode)}}{{end}}'
+# - To set fixed credentials at install time, pass extra values, e.g.:
+# auth:
+#   username: app
+#   password: app
+#   database: app
