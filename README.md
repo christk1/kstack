@@ -20,9 +20,6 @@ Use it as-is for local development and demos, or as a starting point to tailor y
   <a href="https://github.com/christk1/kstack/actions/workflows/ci.yml">
     <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/christk1/kstack/ci.yml?branch=master" />
   </a>
-  <a href="https://github.com/christk1/kstack/releases">
-    <img alt="Release" src="https://img.shields.io/github/v/release/christk1/kstack?sort=semver" />
-  </a>
   <a href="go.mod">
     <img alt="Go version" src="https://img.shields.io/github/go-mod/go-version/christk1/kstack" />
   </a>
@@ -352,6 +349,12 @@ Version metadata (example):
 go build -ldflags "-X main.version=0.1.0 -X main.commit=$(git rev-parse --short HEAD) -X main.buildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)" -o kstack ./cmd/kstack
 ./kstack version
 ```
+
+---
+
+## Releases
+
+Releases are disabled in this template. To enable, add a release workflow and run GoReleaser on tags. You can use the provided `.goreleaser.yaml` as a starting point.
 
 ---
 
