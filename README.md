@@ -44,15 +44,7 @@ Optional: kubectl (to port-forward and inspect resources)
 
 ---
 
-## Install
-
-Install the CLI in your GOPATH/bin (requires Go 1.25):
-
-```bash
-go install github.com/christk1/kstack/cmd/kstack@latest
-```
-
-Or build from source:
+## Build
 
 ```bash
 git clone https://github.com/christk1/kstack.git
